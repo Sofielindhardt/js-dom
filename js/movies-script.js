@@ -10,7 +10,6 @@ const movies = [
     img: "img/inception.webp",
     url: "https://www.imdb.com/title/tt1375666/",
   },
-
   {
     id: 2,
     titel: "The Dark Knight",
@@ -20,7 +19,6 @@ const movies = [
     img: "img/the-dark-knight.webp",
     url: "https://www.imdb.com/title/tt0468569/",
   },
-
   {
     id: 3,
     titel: "Forrest Gump",
@@ -30,7 +28,6 @@ const movies = [
     img: "img/forrest-gump.webp",
     url: "https://www.imdb.com/title/tt0109830/",
   },
-
   {
     id: 4,
     titel: "Superbad",
@@ -40,7 +37,6 @@ const movies = [
     img: "img/superbad.webp",
     url: "https://www.imdb.com/title/tt0829482/",
   },
-
   {
     id: 5,
     titel: "It",
@@ -60,7 +56,6 @@ const movies = [
     img: "img/the-hangover.webp",
     url: "https://www.imdb.com/title/tt1119646/",
   },
-
   {
     id: 7,
     titel: "The Conjuring",
@@ -70,7 +65,6 @@ const movies = [
     img: "img/the-conjuring.webp",
     url: "https://www.imdb.com/title/tt1457767/",
   },
-
   {
     id: 8,
     titel: "Interstellar",
@@ -80,7 +74,6 @@ const movies = [
     img: "img/interstellar.jpg",
     url: "https://www.imdb.com/title/tt0816692/",
   },
-
   {
     id: 9,
     titel: "The Matrix",
@@ -90,7 +83,6 @@ const movies = [
     img: "img/the-matrix.webp",
     url: "https://www.imdb.com/title/tt0133093/",
   },
-
   {
     id: 10,
     titel: "Pulp Fiction",
@@ -100,27 +92,30 @@ const movies = [
     img: "img/pulp-fiction.webp",
     url: "https://www.imdb.com/title/tt0110912/",
   },
+
 ];
 
 const moviesContainer = document.querySelector("#movies-container");
 
-function displayMovies(movieList) {
+function displayMovies(movieslist) {
   moviesContainer.innerHTML = "";
 
-  movies.forEach((item) => {
+  movieslist.forEach((item) => {
     moviesContainer.innerHTML += `
-    <div class="movie-card">
-    <article>
-    <h2>${item.titel}</h2>
-    <p>${item.genre}</p>
-    <p>${item.year}</p>
-    <p>${item.duration}</p>
-   </article>
-  <figure>
-      <a href="${item.url}" target="_blank" rel="noopener noreferrer"><img src="${item.img}" alt="${item.titel}"></a>
-      <figcaption>${item.titel}</figcaption>
-  </figure>
-`;
+      <article>
+      <div class = "movie-card">
+        <h2>${item.titel}</h2>
+        <p>${item.genre}</p>
+        <p>${item.year}</p>
+        <p>${item.duration}</p>
+        <figure>
+          <a href="${item.url}" target="_blank" rel="noopener noreferrer">
+            <img src="${item.img}" alt="${item.titel}">
+          </a>
+          <figcaption>${item.titel}</figcaption>
+        </figure>
+      </article>
+    `;
   });
 }
 
