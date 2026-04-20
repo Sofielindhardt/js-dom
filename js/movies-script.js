@@ -96,6 +96,46 @@ const movies = [
 
 const moviesContainer = document.querySelector("#movies-container");
 
+// Henter de HTML-elementer vi skal arbejde med og gememr dem i variabler
+
+const selectedCategory = document.querySelector("#category-select");
+const searchInput = document.querySelector("#gsearch");
+const form = document.querySelector("form");
+
+function filterMovies() {
+  // Henter den valgte kategori fra dropdown
+  const selectedValue = selectedCategory.value;
+
+  const searchTerm = searchInput.value.toLowerCase().trim();
+
+  let filteredMovies = movies;
+
+  // alle betyder alle perioder
+  // vi filterer kun hvis brugeren har valgt noget andet end "alle"
+  if (selectedValue != "alle") {
+    filteredMovies = filteredMovies.filter((item) => {
+      return item.genre === selectedValue;
+    });
+  }
+
+  if (searchTerm != "") {
+    filteredMovies = filteredMovies.filter((item) => {
+      return item.titel.toLowerCase().includes(searchTerm);
+    });
+  }
+
+  displayMovies(filteredMovies);
+}
+
+selectedCategory.addEventListener("change", filterMovies);
+
+searchInput.addEventListener("input", filterMovies);
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  filterExhibitions();
+});
+
 function displayMovies(movieList) {
   // har opbygger vi et nyt array med map() baseret på vores exhibitionList
 
