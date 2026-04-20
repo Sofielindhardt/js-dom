@@ -92,16 +92,18 @@ const movies = [
     img: "img/pulp-fiction.webp",
     url: "https://www.imdb.com/title/tt0110912/",
   },
-
 ];
 
 const moviesContainer = document.querySelector("#movies-container");
 
-function displayMovies(movieslist) {
-  moviesContainer.innerHTML = "";
+function displayMovies(movieList) {
+  // har opbygger vi et nyt array med map() baseret på vores exhibitionList
 
-  movieslist.forEach((item) => {
-    moviesContainer.innerHTML += `
+  const html = movieList
+    .map((item) => {
+      // Her opbygger vi vores Html-streng
+      return `
+
       <article>
       <div class = "movie-card">
         <h2>${item.titel}</h2>
@@ -115,8 +117,12 @@ function displayMovies(movieslist) {
           <figcaption>${item.titel}</figcaption>
         </figure>
       </article>
+
     `;
-  });
+    })
+    .join("");
+  // Her samler vi det hele med join("") til en samlet html-streng
+  moviesContainer.innerHTML = html;
 }
 
 displayMovies(movies);
